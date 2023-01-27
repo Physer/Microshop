@@ -1,0 +1,20 @@
+{
+  "name": "microshop",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Alex Schouls",
+  "scripts": {
+    "build": "pnpm run -r build",
+    "dev": "pnpm run -r dev",
+    "lint": "pnpm run -r lint",
+    "test": "pnpm run -r test",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "pnpm@7.26.0",
+  "devDependencies": {
+    "prettier": "^2.8.3"
+  }
+}
