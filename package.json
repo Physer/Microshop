@@ -9,7 +9,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "pnpm run -r lint",
     "prepare": "husky install",
-    "start": "pnpm run -r start",
+    "start": "pnpm run -r build && pnpm run -r start",
     "test": "pnpm run -r test"
   },
   "devDependencies": {
