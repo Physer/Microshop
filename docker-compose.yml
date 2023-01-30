@@ -1,0 +1,15 @@
+---
+services:
+  db:
+    image: postgres
+    container_name: postgres_database
+    restart: always
+    env_file:
+      - .env
+
+  adminer:
+    image: adminer
+    container_name: database_admin
+    restart: always
+    ports:
+      - 8080:8080
