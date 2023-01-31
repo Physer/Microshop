@@ -6,7 +6,6 @@
   "scripts": {
     "build": "pnpm run -r build",
     "dev": "pnpm run -r dev",
-    "postinstall": "pnpm run lint",
     "lint": "pnpx prettier --write --ignore-unknown . && pnpm run -r lint",
     "prepare": "husky install",
     "start": "pnpm run -r build && pnpm run -r start",

@@ -105,3 +105,6 @@ dist
 
 # Temporary Draw.IO files
 *.drawio.*
+
+# lowdb
+**/db.json
