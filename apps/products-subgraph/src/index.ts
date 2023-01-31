@@ -12,6 +12,10 @@ const typeDefs = `#graphql
   type Query {
     products: [Product]
   }
+
+  type Mutation {
+    seedProductData: Boolean
+  }
 `;
 
 const products: Array<Product> = [
@@ -31,7 +35,7 @@ const resolvers = {
     products: () => products,
   },
   Mutation: {
-    products: () => repository.seed(),
+    seedProductData: () => repository.seed(),
   },
 };
 

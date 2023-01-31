@@ -21,12 +21,15 @@ export class Repository {
     return [];
   }
 
-  seed(numberOfRecords = 1000) {
+  seed(numberOfRecords = 1000): boolean {
     const products: Array<Product> = [];
     Array.from({ length: numberOfRecords }).forEach(() => {
       products.push(this.generateFakeProduct());
     });
-    this.database.data.products = products;
+    this.database.data = {
+      products: products
+    }
+    return true;
   }
 
   private generateFakeProduct(): Product {
