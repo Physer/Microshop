@@ -8,7 +8,7 @@ type Data = {
   products: Product[];
 };
 
-class Repository {
+export class Repository {
   private readonly database: Low<Data>;
 
   constructor() {

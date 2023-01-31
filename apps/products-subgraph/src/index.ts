@@ -1,5 +1,6 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
+import { Repository } from './repository';
 import { Product } from './types/product.type';
 
 const typeDefs = `#graphql
@@ -24,9 +25,13 @@ const products: Array<Product> = [
   },
 ];
 
+const repository = new Repository();
 const resolvers = {
   Query: {
     products: () => products,
+  },
+  Mutation: {
+    products: () => repository.seed(),
   },
 };
 
