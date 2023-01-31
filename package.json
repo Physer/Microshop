@@ -6,11 +6,11 @@
   "scripts": {
     "build": "pnpm run -r build",
     "dev": "pnpm run -r dev",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "pnpx prettier --write --ignore-unknown . && pnpm run -r lint",
     "prepare": "husky install",
     "start": "pnpm run -r build && pnpm run -r start",
-    "test": "pnpm run -r test"
+    "test": "pnpm run -r test",
+    "postinstall": "pnpm run lint"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
