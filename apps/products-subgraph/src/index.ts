@@ -1,5 +1,5 @@
-import { ApolloServer } from "@apollo/server";
-import { startStandaloneServer } from "@apollo/server/standalone";
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
 
 const typeDefs = `#graphql
   type Product {
@@ -14,12 +14,12 @@ const typeDefs = `#graphql
 
 const products: Array<Product> = [
   {
-    name: "Bakkersrekje",
-    description: "Het ultieme bakelement",
+    name: 'Bakkersrekje',
+    description: 'Het ultieme bakelement',
   },
   {
-    name: "Accubak",
-    description: "Een geweldige accubak",
+    name: 'Accubak',
+    description: 'Een geweldige accubak',
   },
 ];
 
