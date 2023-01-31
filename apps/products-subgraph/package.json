@@ -4,6 +4,7 @@
   "author": "Alex Schouls",
   "type": "module",
   "scripts": {
+    "clean": "shx rm -r dist",
     "start": "pnpm run build && node ./dist/index.js",
     "build": "tsc"
   },

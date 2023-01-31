@@ -1,7 +1,7 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
-import { Repository } from './repository';
-import { Product } from './types/product.type';
+import { Repository } from './repository.js';
+import { Product } from './types/product.type.js';
 
 const typeDefs = `#graphql
   type Product {

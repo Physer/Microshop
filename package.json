@@ -8,6 +8,7 @@
     "dev": "pnpm run -r dev",
     "lint": "pnpx prettier --write --ignore-unknown . && pnpm run -r lint",
     "prepare": "husky install",
+    "products": "pnpm run --filter products-subgraph",
     "start": "pnpm run -r build && pnpm run -r start",
     "test": "pnpm run -r test"
   },
@@ -20,6 +21,7 @@
     "eslint-config-prettier": "^8.6.0",
     "husky": "^8.0.3",
     "prettier": "^2.8.3",
+    "shx": "^0.3.4",
     "typescript": "^4.9.4"
   },
   "packageManager": "pnpm@7.26.0",
