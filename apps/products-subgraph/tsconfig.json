@@ -6,6 +6,7 @@
     "module": "ESNext",
     "moduleResolution": "nodenext",
     "esModuleInterop": true,
-    "types": ["node"]
+    "types": ["node"],
+    "sourceMap": true
   }
 }

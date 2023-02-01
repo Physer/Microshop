@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "clean": "shx rm -r dist",
-    "start": "pnpm run build && node ./dist/index.js",
+    "start": "pnpm run build && node ./dist/index.js --inspect",
     "build": "tsc"
   },
   "dependencies": {
