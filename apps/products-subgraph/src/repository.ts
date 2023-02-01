@@ -2,7 +2,8 @@ import { faker } from '@faker-js/faker';
 import type { Product } from './types/product.type.js';
 import { Low } from 'lowdb';
 import { JSONFile } from 'lowdb/node';
-import { dirname } from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 
 type Data = {
   products: Product[];
@@ -12,7 +13,9 @@ export class Repository {
   private readonly database: Low<Data>;
 
   constructor() {
-    const file = dirname('db.json');
+    const __dirname = dirname(fileURLToPath(import.meta.url));
+    const file = join(__dirname, 'db.json');
+    console.log(file);
     const adapter = new JSONFile<Data>(file);
     this.database = new Low(adapter);
   }
@@ -21,14 +24,15 @@ export class Repository {
     return [];
   }
 
-  seed(numberOfRecords = 1000): boolean {
+  async seed(numberOfRecords = 1000): Promise<boolean> {
     const products: Array<Product> = [];
     Array.from({ length: numberOfRecords }).forEach(() => {
       products.push(this.generateFakeProduct());
     });
     this.database.data = {
-      products: products
-    }
+      products: products,
+    };
+    await this.database.write();
     return true;
   }
 

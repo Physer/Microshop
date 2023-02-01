@@ -35,7 +35,7 @@ const resolvers = {
     products: () => products,
   },
   Mutation: {
-    seedProductData: () => repository.seed(),
+    seedProductData: async () => await repository.seed(),
   },
 };
 
