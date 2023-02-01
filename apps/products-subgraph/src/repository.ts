@@ -20,8 +20,9 @@ export class Repository {
     this.database = new Low(adapter);
   }
 
-  getMany<T>(): Array<T> {
-    return [];
+  async getProducts(): Promise<Array<Product>> {
+    await this.database.read();
+    return this.database.data.products || [];
   }
 
   async seed(numberOfRecords = 1000): Promise<boolean> {

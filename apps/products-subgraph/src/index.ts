@@ -1,7 +1,6 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import { Repository } from './repository.js';
-import { Product } from './types/product.type.js';
 
 const typeDefs = `#graphql
   type Product {
@@ -18,21 +17,10 @@ const typeDefs = `#graphql
   }
 `;
 
-const products: Array<Product> = [
-  {
-    name: 'Bakkersrekje',
-    description: 'Het ultieme bakelement',
-  },
-  {
-    name: 'Accubak',
-    description: 'Een geweldige accubak',
-  },
-];
-
 const repository = new Repository();
 const resolvers = {
   Query: {
-    products: () => products,
+    products: () => async () => await repository.getProducts(),
   },
   Mutation: {
     seedProductData: async () => await repository.seed(),
