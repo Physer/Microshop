@@ -42,7 +42,7 @@ export class Repository {
     return {
       name: faker.commerce.productName(),
       description: faker.commerce.productDescription(),
-      id: randomUUID()
+      id: randomUUID(),
     };
   }
 }
