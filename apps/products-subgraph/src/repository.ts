@@ -23,7 +23,7 @@ export class Repository {
 
   async getProducts(): Promise<Array<Product>> {
     await this.database.read();
-    return this.database.data.products || [];
+    return this.database?.data?.products || [];
   }
 
   async seed(numberOfRecords = 1000): Promise<boolean> {
