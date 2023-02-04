@@ -6,6 +6,7 @@ const typeDefs = `#graphql
   type Product {
     name: String
     description: String
+    id: String
   }
 
   type Query {
@@ -20,7 +21,7 @@ const typeDefs = `#graphql
 const repository = new Repository();
 const resolvers = {
   Query: {
-    products: () => async () => await repository.getProducts(),
+    products: async () => await repository.getProducts(),
   },
   Mutation: {
     seedProductData: async () => await repository.seed(),

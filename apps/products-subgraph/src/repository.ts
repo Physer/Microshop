@@ -4,6 +4,7 @@ import { Low } from 'lowdb';
 import { JSONFile } from 'lowdb/node';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import { randomUUID } from 'crypto';
 
 type Data = {
   products: Product[];
@@ -41,6 +42,7 @@ export class Repository {
     return {
       name: faker.commerce.productName(),
       description: faker.commerce.productDescription(),
+      id: randomUUID()
     };
   }
 }
