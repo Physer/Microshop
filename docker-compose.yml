@@ -1,0 +1,10 @@
+---
+services:
+  products:
+    container_name: products
+    ports:
+      - 3001:4000
+    build:
+      args:
+        - APPLICATION_NAME=products
+      context: '.'
