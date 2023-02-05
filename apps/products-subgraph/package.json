@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "clean": "shx rm -r dist",
-    "lint": "eslint --cache --ext .ts,.json",
+    "lint": "eslint --cache --ext .ts,.json,.graphql",
     "start": "pnpm run build && node ./dist/index.js --inspect",
     "build": "tsc"
   },

@@ -1,22 +1,7 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import { Repository } from './repository.js';
-
-const typeDefs = `#graphql
-  type Product {
-    name: String
-    description: String
-    id: String
-  }
-
-  type Query {
-    products: [Product]
-  }
-
-  type Mutation {
-    seedProductData: Boolean
-  }
-`;
+import { readFileSync } from 'fs';
 
 const repository = new Repository();
 const resolvers = {
@@ -28,11 +13,11 @@ const resolvers = {
   },
 };
 
+const typeDefs = readFileSync('./schema.graphql', { encoding: 'utf-8' });
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  typeDefs: typeDefs,
+  resolvers: resolvers,
 });
-
 const { url } = await startStandaloneServer(server, {
   listen: { port: 4000 },
 });

@@ -16,7 +16,6 @@ export class Repository {
   constructor() {
     const __dirname = dirname(fileURLToPath(import.meta.url));
     const file = join(__dirname, 'db.json');
-    console.log(file);
     const adapter = new JSONFile<Data>(file);
     this.database = new Low(adapter);
   }

@@ -1,0 +1,13 @@
+type Product {
+  name: String
+  description: String
+  id: String
+}
+
+type Query {
+  products: [Product]
+}
+
+type Mutation {
+  seedProductData: Boolean
+}
