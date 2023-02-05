@@ -9,6 +9,7 @@
     "lint": "prettier --write --ignore-unknown . && pnpm run -r lint",
     "prepare": "husky install",
     "products": "pnpm run --filter products-subgraph",
+    "pricing": "pnpm run --filter pricing-subgraph",
     "start": "pnpm run -r build && pnpm run -r start",
     "test": "pnpm run -r test"
   },
