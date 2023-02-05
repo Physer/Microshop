@@ -8,14 +8,15 @@
     "dev": "pnpm run -r dev",
     "lint": "prettier --write --ignore-unknown . && pnpm run -r lint",
     "prepare": "husky install",
-    "products": "pnpm run --filter products-subgraph",
     "pricing": "pnpm run --filter pricing-subgraph",
+    "products": "pnpm run --filter products-subgraph",
     "start": "pnpm run -r build && pnpm run -r start",
     "test": "pnpm run -r test"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
+    "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.49.0",
     "eslint": "^8.32.0",
