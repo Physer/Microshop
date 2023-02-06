@@ -1,22 +1,28 @@
-# ------------ Application-specific arguments ------------ #
-ARG APPLICATION_NAME
 # ------------ Builder ------------ #
 FROM node:lts-alpine as builder
-RUN npm install -g pnpm
+ARG APPLICATION_NAME
 ENV DOCKER_BUILDKIT=1
+
 WORKDIR /app
+
 COPY . .
-RUN pnpm install --frozen-lockfile && \
-pnpm $APPLICATION_NAME build
-RUN rm -rf node_modules && \
-pnpm install --ignore-scripts --prod
+
+RUN corepack enable && pnpm install --ignore-scripts && pnpm ${APPLICATION_NAME} build
+# ENTRYPOINT ["tail", "-f", "/dev/null"]
+
 
 # ------------ Runner ------------ #
 FROM node:lts-alpine as runner
-RUN npm install -g pnpm
+ARG APPLICATION_PATH
 ENV NODE_ENV=PRODUCTION
+
 WORKDIR /app
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/dist .
-EXPOSE 3000
-CMD [ "pnpx", "node ./index.js" ]
+
+COPY --from=builder /app/package.json .
+COPY --from=builder /app/${APPLICATION_PATH}/package.json ./${APPLICATION_PATH}
+COPY --from=builder /app/${APPLICATION_PATH}/schema.graphql ./${APPLICATION_PATH}
+COPY --from=builder /app/${APPLICATION_PATH}/dist ./${APPLICATION_PATH}
+
+RUN corepack enable && pnpm fetch --prod
+
+CMD [ "node ./index.js" ]

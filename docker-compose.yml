@@ -7,4 +7,5 @@ services:
     build:
       args:
         - APPLICATION_NAME=products
+        - APPLICATION_PATH=apps/products-subgraph
       context: '.'
