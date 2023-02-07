@@ -1,7 +1,7 @@
 type Product {
   name: String
   description: String
-  id: String
+  id: Int
 }
 
 type Query {
