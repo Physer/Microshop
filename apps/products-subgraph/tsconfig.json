@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2017",
     "module": "ES2022",
-    "moduleResolution": "nodenext",
+    "moduleResolution": "node16",
     "sourceMap": true,
     "outDir": "dist",
     "removeComments": true,
