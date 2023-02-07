@@ -1,0 +1,13 @@
+type Price {
+  id: String
+  productId: Int
+  price: String
+}
+
+type Query {
+  prices: [Price]
+}
+
+type Mutation {
+  seedPricingData: Boolean
+}
