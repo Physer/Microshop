@@ -10,3 +10,13 @@ services:
         - APPLICATION_PATH=apps/products-subgraph
       dockerfile: ./infrastructure/subgraphs.Dockerfile
       context: '.'
+  pricing:
+    container_name: pricing
+    ports:
+      - 3002:4000
+    build:
+      args:
+        - APPLICATION_NAME=pricing
+        - APPLICATION_PATH=apps/pricing-subgraph
+      dockerfile: ./infrastructure/subgraphs.Dockerfile
+      context: '.'
