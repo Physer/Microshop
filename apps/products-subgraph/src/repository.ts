@@ -4,7 +4,6 @@ import { Low } from 'lowdb';
 import { JSONFile } from 'lowdb/node';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import { randomUUID } from 'crypto';
 
 type Data = {
   products: Product[];
@@ -27,8 +26,10 @@ export class Repository {
 
   async seed(numberOfRecords = 1000): Promise<boolean> {
     const products: Array<Product> = [];
+    let productId = 1;
     Array.from({ length: numberOfRecords }).forEach(() => {
-      products.push(this.generateFakeProduct());
+      products.push(this.generateFakeProduct(productId));
+      productId++;
     });
     this.database.data = {
       products: products,
@@ -37,11 +38,11 @@ export class Repository {
     return true;
   }
 
-  private generateFakeProduct(): Product {
+  private generateFakeProduct(currentId: number): Product {
     return {
       name: faker.commerce.productName(),
       description: faker.commerce.productDescription(),
-      id: randomUUID(),
+      id: currentId,
     };
   }
 }
