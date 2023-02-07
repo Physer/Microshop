@@ -4,17 +4,15 @@
   "author": "Alex Schouls",
   "type": "module",
   "scripts": {
+    "build": "tsc",
     "clean": "shx rm -r dist",
     "lint": "eslint --cache --ext .ts,.json,.graphql",
-    "start": "pnpm run build && node ./dist/index.js --inspect",
-    "build": "tsc"
+    "start": "pnpm run build && node ./dist/index.js --inspect"
   },
   "dependencies": {
     "@apollo/server": "^4.3.2",
+    "@faker-js/faker": "^7.6.0",
     "graphql": "^16.6.0",
     "lowdb": "^5.0.5"
-  },
-  "devDependencies": {
-    "@faker-js/faker": "^7.6.0"
   }
 }
