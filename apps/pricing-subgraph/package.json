@@ -5,10 +5,8 @@
   "author": "Alex Schouls",
   "dependencies": {
     "@apollo/server": "^4.3.2",
+    "@faker-js/faker": "^7.6.0",
     "graphql": "^16.6.0",
     "lowdb": "^5.0.5"
-  },
-  "devDependencies": {
-    "@faker-js/faker": "^7.6.0"
   }
 }
