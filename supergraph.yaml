@@ -1,0 +1,10 @@
+federation_version: 2
+subgraphs:
+  products:
+    routing_url: http://host.docker.internal:3001/graphql
+    schema:
+      file: ./apps/products-subgraph/schema.graphql
+  pricing:
+    routing_url: http://host.docker.internal:3002/graphql
+    schema:
+      file: ./apps/pricing-subgraph/schema.graphql
