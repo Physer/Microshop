@@ -2,13 +2,15 @@
   "name": "products-subgraph",
   "version": "0.1.0",
   "author": "Alex Schouls",
+  "private": true,
   "type": "module",
   "scripts": {
     "build": "tsc",
     "clean": "shx rm -rf dist && shx rm -f **/products.json",
     "dev": "nodemon --esm ./src/index.ts",
     "lint": "eslint --cache --ext .ts,.json,.graphql",
-    "start": "pnpm run build && node ./dist/index.js --inspect"
+    "start": "pnpm run build && node ./dist/index.js",
+    "registerLocally": "rover dev -s ../../schemas/products.graphql -u http://localhost:3001/graphql -n products"
   },
   "dependencies": {
     "@apollo/server": "^4.3.2",
