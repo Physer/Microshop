@@ -21,6 +21,8 @@ COPY --from=builder /app/${APPLICATION_PATH}/package.json ./${APPLICATION_PATH}
 COPY --from=builder /app/${APPLICATION_PATH}/schema.graphql ./${APPLICATION_PATH}/dist
 COPY --from=builder /app/${APPLICATION_PATH}/dist ./${APPLICATION_PATH}/dist
 
+# ENTRYPOINT ["tail", "-f", "/dev/null"]
+
 RUN corepack enable && pnpm install --frozen-lockfile --ignore-scripts --prod
 
 WORKDIR /app/${APPLICATION_PATH}/dist

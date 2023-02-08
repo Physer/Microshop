@@ -13,7 +13,7 @@ const resolvers = {
   },
 };
 
-const typeDefs = readFileSync('../../schemas/pricing.graphql', {
+const typeDefs = readFileSync('./schema.graphql', {
   encoding: 'utf-8',
 });
 const server = new ApolloServer({
