@@ -1,46 +1,26 @@
 schema
   @link(url: "https://specs.apollo.dev/link/v1.0")
-  @link(url: "https://specs.apollo.dev/join/v0.2", for: EXECUTION) {
+  @link(url: "https://specs.apollo.dev/join/v0.2", for: EXECUTION)
+{
   query: Query
   mutation: Mutation
 }
 
-directive @join__field(
-  graph: join__Graph!
-  requires: join__FieldSet
-  provides: join__FieldSet
-  type: String
-  external: Boolean
-  override: String
-  usedOverridden: Boolean
-) repeatable on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
+directive @join__field(graph: join__Graph!, requires: join__FieldSet, provides: join__FieldSet, type: String, external: Boolean, override: String, usedOverridden: Boolean) repeatable on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
 
 directive @join__graph(name: String!, url: String!) on ENUM_VALUE
 
-directive @join__implements(
-  graph: join__Graph!
-  interface: String!
-) repeatable on OBJECT | INTERFACE
+directive @join__implements(graph: join__Graph!, interface: String!) repeatable on OBJECT | INTERFACE
 
-directive @join__type(
-  graph: join__Graph!
-  key: join__FieldSet
-  extension: Boolean! = false
-  resolvable: Boolean! = true
-) repeatable on OBJECT | INTERFACE | UNION | ENUM | INPUT_OBJECT | SCALAR
+directive @join__type(graph: join__Graph!, key: join__FieldSet, extension: Boolean! = false, resolvable: Boolean! = true) repeatable on OBJECT | INTERFACE | UNION | ENUM | INPUT_OBJECT | SCALAR
 
-directive @link(
-  url: String
-  as: String
-  for: link__Purpose
-  import: [link__Import]
-) repeatable on SCHEMA
+directive @link(url: String, as: String, for: link__Purpose, import: [link__Import]) repeatable on SCHEMA
 
 scalar join__FieldSet
 
 enum join__Graph {
-  PRICING @join__graph(name: "pricing", url: "http://localhost:3002/graphql")
-  PRODUCTS @join__graph(name: "products", url: "http://localhost:3001/graphql")
+  PRICING @join__graph(name: "pricing", url: "http://pricing:3002/graphql")
+  PRODUCTS @join__graph(name: "products", url: "http://products:3001/graphql")
 }
 
 scalar link__Import
@@ -57,24 +37,34 @@ enum link__Purpose {
   EXECUTION
 }
 
-type Mutation @join__type(graph: PRICING) @join__type(graph: PRODUCTS) {
+type Mutation
+  @join__type(graph: PRICING)
+  @join__type(graph: PRODUCTS)
+{
   seedPricingData: Boolean @join__field(graph: PRICING)
   seedProductData: Boolean @join__field(graph: PRODUCTS)
 }
 
-type Price @join__type(graph: PRICING) {
+type Price
+  @join__type(graph: PRICING)
+{
   id: String
   productId: Int
   price: String
 }
 
-type Product @join__type(graph: PRODUCTS) {
+type Product
+  @join__type(graph: PRODUCTS)
+{
   name: String
   description: String
   id: Int
 }
 
-type Query @join__type(graph: PRICING) @join__type(graph: PRODUCTS) {
+type Query
+  @join__type(graph: PRICING)
+  @join__type(graph: PRODUCTS)
+{
   prices: [Price] @join__field(graph: PRICING)
   products: [Product] @join__field(graph: PRODUCTS)
 }

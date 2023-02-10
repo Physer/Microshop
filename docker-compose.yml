@@ -10,6 +10,8 @@ services:
         - APPLICATION_PATH=apps/products-subgraph
       dockerfile: ./infrastructure/subgraphs.Dockerfile
       context: '.'
+    networks:
+      - graphql
   pricing:
     container_name: pricing
     ports:
@@ -20,14 +22,27 @@ services:
         - APPLICATION_PATH=apps/pricing-subgraph
       dockerfile: ./infrastructure/subgraphs.Dockerfile
       context: '.'
+    networks:
+      - graphql
   apollo-router:
     container_name: router
     image: ghcr.io/apollographql/router:v1.10.2
     volumes:
       - ./supergraph.graphql:/dist/schema/supergraph.graphql
-    command: ['--dev', '-s', 'schema/supergraph.graphql', '--log', 'info']
+    command:
+      [
+        '--dev',
+        '-s',
+        'schema/supergraph.graphql',
+        '--log',
+        'info'
+      ]
     ports:
       - '3000:4000'
     depends_on:
       - products
       - pricing
+    networks:
+      - graphql
+networks:
+  graphql:
