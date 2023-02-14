@@ -2,6 +2,8 @@ import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import { Repository } from './repository.js';
 import { readFileSync } from 'fs';
+import { gql } from 'graphql-tag';
+import { buildSubgraphSchema } from '@apollo/subgraph';
 
 const repository = new Repository();
 const resolvers = {
@@ -13,12 +15,12 @@ const resolvers = {
   },
 };
 
-const typeDefs = readFileSync('./schema.graphql', {
+const schema = readFileSync('./schema.graphql', {
   encoding: 'utf-8',
 });
+const typeDefs = gql(schema);
 const server = new ApolloServer({
-  typeDefs: typeDefs,
-  resolvers: resolvers,
+  schema: buildSubgraphSchema({ typeDefs, resolvers }),
 });
 const { url } = await startStandaloneServer(server, {
   listen: { port: 3001 },
