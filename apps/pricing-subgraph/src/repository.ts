@@ -20,7 +20,7 @@ export class Repository {
     this.database = new Low(adapter);
   }
 
-  async getProducts(): Promise<Array<Price>> {
+  async getPrices(): Promise<Array<Price>> {
     await this.database.read();
     return this.database?.data?.prices || [];
   }
