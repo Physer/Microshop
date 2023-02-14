@@ -9,7 +9,7 @@
     "buildSupergraph": "rover supergraph compose --config ./supergraph.yaml > supergraph.graphql",
     "clean": "pnpm run -r clean",
     "dev": "pnpm run -r dev",
-    "lint": "prettier --write --ignore-unknown . && pnpm run -r lint",
+    "lint": "prettier --write . && pnpm run -r lint",
     "prepare": "husky install",
     "pricing": "pnpm run --filter pricing-subgraph",
     "products": "pnpm run --filter products-subgraph",
