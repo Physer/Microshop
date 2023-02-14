@@ -6,7 +6,7 @@ import { Repository } from './repository.js';
 const repository = new Repository();
 const resolvers = {
   Query: {
-    prices: async () => await repository.getProducts(),
+    prices: async () => await repository.getPrices(),
   },
   Mutation: {
     seedPricingData: async () => await repository.seed(),
