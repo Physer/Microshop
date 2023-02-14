@@ -29,9 +29,16 @@ services:
     image: ghcr.io/apollographql/router:v1.10.2
     volumes:
       - ./supergraph.graphql:/dist/schema/supergraph.graphql
-    command: ['--dev', '-s', 'schema/supergraph.graphql', '--log', 'info']
+    command:
+      [
+        '--dev',
+        '-s',
+        'schema/supergraph.graphql',
+        '--log',
+        'info'
+      ]
     ports:
-      - '3000:4000'
+      - '4000:4000'
     depends_on:
       - products
       - pricing
