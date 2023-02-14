@@ -10,7 +10,7 @@
     "dev": "nodemon --esm ./src/index.ts",
     "lint": "eslint --cache --ext .ts,.json,.graphql",
     "start": "pnpm run build && node ./dist/index.js",
-    "registerLocally": "rover dev -s ../../schemas/pricing.graphql -u http://localhost:3002/graphql -n pricing"
+    "registerLocally": "rover dev -s ./schema.graphql -u http://localhost:3002/graphql -n pricing"
   },
   "dependencies": {
     "@apollo/server": "^4.3.2",
