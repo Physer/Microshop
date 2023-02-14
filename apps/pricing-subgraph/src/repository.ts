@@ -4,7 +4,6 @@ import { Low } from 'lowdb';
 import { JSONFile } from 'lowdb/node';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import { randomUUID } from 'crypto';
 
 type Data = {
   prices: Price[];
@@ -41,7 +40,6 @@ export class Repository {
 
   private generateFakePrice(productId: number): Price {
     return {
-      id: randomUUID(),
       price: faker.commerce.price(),
       productId: productId,
     };

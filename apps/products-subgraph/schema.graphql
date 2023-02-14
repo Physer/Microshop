@@ -1,10 +1,13 @@
 extend schema
-  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+  @link(
+    url: "https://specs.apollo.dev/federation/v2.0"
+    import: ["@key", "@shareable"]
+  )
 
-type Product {
-  name: String
-  description: String
-  id: Int
+type Product @key(fields: "id") @shareable {
+  id: ID!
+  name: String!
+  description: String!
 }
 
 type Query {

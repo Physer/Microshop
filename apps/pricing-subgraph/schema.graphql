@@ -1,14 +1,16 @@
 extend schema
-  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+  @link(
+    url: "https://specs.apollo.dev/federation/v2.0"
+    import: ["@key", "@shareable"]
+  )
 
-type Price {
-  id: String
-  productId: Int
-  price: String
+type Product @key(fields: "id") @shareable {
+  id: ID!
+  price: String!
 }
 
 type Query {
-  prices: [Price]
+  products: [Product]
 }
 
 type Mutation {
