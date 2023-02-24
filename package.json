@@ -17,12 +17,12 @@
     "test": "pnpm run -r test"
   },
   "devDependencies": {
-    "@apollo/rover": "^0.11.1",
-    "@commitlint/cli": "^17.4.3",
-    "@commitlint/config-conventional": "^17.4.3",
-    "@types/node": "^18.13.0",
-    "@typescript-eslint/eslint-plugin": "^5.52.0",
-    "@typescript-eslint/parser": "^5.52.0",
+    "@apollo/rover": "^0.12.2",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@types/node": "^18.14.1",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "husky": "^8.0.3",
