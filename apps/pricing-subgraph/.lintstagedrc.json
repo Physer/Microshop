@@ -1,0 +1,4 @@
+{
+  "*": "prettier --write",
+  "*.ts,*.json,*.graphql": "eslint --fix --ext .ts,.json,.graphql"
+}
