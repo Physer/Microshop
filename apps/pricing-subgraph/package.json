@@ -13,7 +13,7 @@
     "registerLocally": "rover dev -s ./schema.graphql -u http://localhost:3002/graphql -n pricing"
   },
   "dependencies": {
-    "@apollo/server": "^4.4.0",
+    "@apollo/server": "^4.4.1",
     "@apollo/subgraph": "^2.3.2",
     "@faker-js/faker": "^7.6.0",
     "graphql": "^16.6.0",
